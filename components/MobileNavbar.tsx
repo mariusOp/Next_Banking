@@ -14,6 +14,7 @@ import Link from 'next/link'
 import classNames from 'classnames'
 import { sidebarLinks } from '@/constants'
 import { usePathname } from "next/navigation"
+import Footer from './Footer'
 
 const MobileNavbar = ({ user }: MobileNavProps) => {
     const pathName = usePathname();
@@ -47,8 +48,8 @@ const MobileNavbar = ({ user }: MobileNavProps) => {
                                     }
                                     )
                                     return (
-                                        <SheetClose asChild>
-                                            <Link href={item.route} key={item.label} className={linkClass}>
+                                        <SheetClose asChild key={item.label}>
+                                            <Link href={item.route} key={item.label}  className={linkClass}>
                                                 <div className="relative">
                                                     <Image src={item.imgURL} width={20} height={20} alt={item.label} className={imageClass} />
                                                 </div>
@@ -59,6 +60,7 @@ const MobileNavbar = ({ user }: MobileNavProps) => {
                                 })}
                             </nav>
                         </SheetClose>
+                        <Footer user={user} type='mobile'/>
                     </div>
                 </SheetContent>
             </Sheet>
